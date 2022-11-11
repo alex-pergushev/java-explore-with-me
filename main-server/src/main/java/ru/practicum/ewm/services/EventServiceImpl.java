@@ -63,6 +63,7 @@ public class EventServiceImpl extends StatisticEventService implements EventServ
 
         return (EventFullOutDto) addConfirmedRequestsAndViews(List.of(event), true).get(0);
     }
+
     private BooleanExpression getFinalCondition(String text, int[] categories, Boolean paid, LocalDateTime rangeStart,
                                                 LocalDateTime rangeEnd, boolean onlyAvailable) {
         List<BooleanExpression> conditions = new ArrayList<>();

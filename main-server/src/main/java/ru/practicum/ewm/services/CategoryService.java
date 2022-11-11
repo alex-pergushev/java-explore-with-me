@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface CategoryService {
     List<CategoryOutDto> getCategories(int from, int size);
+
     CategoryOutDto getCategoryById(long catId);
 }

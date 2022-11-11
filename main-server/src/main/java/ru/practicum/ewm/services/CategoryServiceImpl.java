@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 public class CategoryServiceImpl implements CategoryService {
 
     private final CategoryRepository categoryRepository;
+
     @Override
     public List<CategoryOutDto> getCategories(int from, int size) {
         return categoryRepository.findAll(Pagination.of(from, size)).getContent().stream()
