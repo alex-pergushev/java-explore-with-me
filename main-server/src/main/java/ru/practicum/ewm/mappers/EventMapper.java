@@ -56,8 +56,8 @@ public class EventMapper {
                 .initiator(user)
                 .description(eventInDto.getDescription())
                 .participantLimit(eventInDto.getParticipantLimit())
-                .locationLatitude(eventInDto.getLocation().getLatitude())
-                .locationLongitude(eventInDto.getLocation().getLongitude())
+                .locationLatitude(eventInDto.getLocation().getLat())
+                .locationLongitude(eventInDto.getLocation().getLon())
                 .state(State.PENDING)
                 .title(eventInDto.getTitle())
                 .requestModeration(eventInDto.isRequestModeration())
@@ -67,8 +67,8 @@ public class EventMapper {
 
     private static LocationDto getLocationFromEvent(Event event) {
         return LocationDto.builder()
-                .latitude(event.getLocationLatitude())
-                .longitude(event.getLocationLongitude())
+                .lat(event.getLocationLatitude())
+                .lon(event.getLocationLongitude())
                 .build();
     }
 }

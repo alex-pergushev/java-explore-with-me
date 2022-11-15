@@ -171,8 +171,8 @@ public class EventAdminServiceImpl extends StatisticEventService implements Even
         if (changedDto.getTitle() != null) event.setTitle(changedDto.getTitle());
         if (changedDto.getEventDate() != null) event.setEventDate(changedDto.getEventDate());
         if (newLocation != null) {
-            event.setLocationLatitude(newLocation.getLatitude());
-            event.setLocationLongitude(newLocation.getLongitude());
+            event.setLocationLatitude(newLocation.getLat());
+            event.setLocationLongitude(newLocation.getLon());
         }
         if (changedDto.getPaid() != null) event.setPaid(changedDto.getPaid());
         if (changedDto.getParticipantLimit() != null) event.setParticipantLimit(changedDto.getParticipantLimit());
