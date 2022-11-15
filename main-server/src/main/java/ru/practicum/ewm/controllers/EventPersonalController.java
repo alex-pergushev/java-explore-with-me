@@ -36,6 +36,12 @@ public class EventPersonalController {
         return eventPersonalService.getEvents(userId, from, size);
     }
 
+    @PostMapping
+    public EventFullOutDto addEvent(@PathVariable @Positive(message = "Значение userId должно быть больше 0") long userId,
+                                    @RequestBody @Valid EventInDto eventInDto) {
+        return eventPersonalService.createEvent(userId, eventInDto);
+    }
+
     @GetMapping("/{eventId}")
     public EventFullOutDto getEvent(@PathVariable @Positive(message = "Значение {userId} должно быть больше 0")
                                     long userId,
@@ -48,12 +54,6 @@ public class EventPersonalController {
     public EventFullOutDto updateEvent(@PathVariable @Positive(message = "Значение userId должно быть больше 0") long userId,
                                        @RequestBody @Valid EventChangedDto eventChangedDto) {
         return eventPersonalService.updateEvent(userId, eventChangedDto);
-    }
-
-    @PostMapping
-    public EventFullOutDto addEvent(@PathVariable @Positive(message = "Значение userId должно быть больше 0") long userId,
-                                    @RequestBody @Valid EventInDto eventInDto) {
-        return eventPersonalService.createEvent(userId, eventInDto);
     }
 
     @PatchMapping("/{eventId}")

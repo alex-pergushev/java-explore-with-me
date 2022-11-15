@@ -75,8 +75,6 @@ public class CompilationAdminServiceImpl extends StatisticEventService implement
         log.info("событие id={} удалено из подборки id={}", eventId, compId);
     }
 
-
-
     @Override
     public void addEvent(long compId, long eventId) {
         Compilation compilation = getCompilationById(compId);

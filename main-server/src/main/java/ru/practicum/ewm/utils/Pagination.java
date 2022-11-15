@@ -1,7 +1,6 @@
 package ru.practicum.ewm.utils;
 
 import lombok.Data;
-
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
@@ -12,13 +11,13 @@ public class Pagination implements Pageable {
     private final int size;
     private final Sort sort;
 
-    public Pagination(int from, int size, Sort sort) {
+    private Pagination(int from, int size, Sort sort) {
         this.from = from;
         this.size = size;
         this.sort = sort;
     }
 
-    public Pagination(int from, int size) {
+    private Pagination(int from, int size) {
         this.from = from;
         this.size = size;
         sort = Sort.unsorted();
@@ -79,6 +78,4 @@ public class Pagination implements Pageable {
     public static Pageable of(int from, int size, Sort sort) {
         return new Pagination(from, size, sort);
     }
-
-
 }

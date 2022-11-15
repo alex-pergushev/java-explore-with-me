@@ -3,11 +3,13 @@ services:
   stats-db:
     image: postgres:14-alpine
     ports:
-      - "6590:5432"
+      - "6580:5432"
+    volumes:
+      - /var/lib/postgresql/data/
     environment:
       - POSTGRES_DB=ewm_stat_service
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=iamroot
+      - POSTGRES_PASSWORD=postgres
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U postgres" ]
       interval: 10s
@@ -17,12 +19,13 @@ services:
   main-db:
     image: postgres:14-alpine
     ports:
-      - "6580:5432"
+      - "6590:5432"
+    volumes:
+      - /var/lib/postgresql/data/
     environment:
       - POSTGRES_DB=ewm_main_service
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=iamroot
-
+      - POSTGRES_PASSWORD=postgres
 
   main-server:
     build: ./main-server
@@ -36,7 +39,7 @@ services:
       - STATS-SERVER_URL=http://stats-server:9090
       - SPRING_DATASOURCE_URL=jdbc:postgresql://main-db:5432/ewm_main_service
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=iamroot
+      - POSTGRES_PASSWORD=postgres
 
   stats-server:
     build: ./stats-server
@@ -48,5 +51,5 @@ services:
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://stats-db:5432/ewm_stat_service
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=iamroot
+      - POSTGRES_PASSWORD=postgres
       - SERVER-PORT=9090
