@@ -46,7 +46,7 @@ public class CategoryAdminServiceImpl implements CategoryAdminService {
         Category category = categoryRepository.findById(categoryChangedDto.getId())
                 .orElseThrow(() -> new CategoryNotFoundException(String.format("категория с id=%s не найдена",
                         categoryChangedDto.getId())));
-        if(!categoryRepository.existsByName(categoryChangedDto.getName())) {
+        if (!categoryRepository.existsByName(categoryChangedDto.getName())) {
             category.setName(categoryChangedDto.getName());
             Category updated = categoryRepository.save(category);
             log.info("категория id={}, name={} обновлена", updated.getId(), updated.getName());
