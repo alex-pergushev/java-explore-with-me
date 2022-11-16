@@ -19,12 +19,12 @@ class CategoryChangedDtoTest {
     void testCategoryChangedDto() throws IOException {
         CategoryChangedDto category = CategoryChangedDto.builder()
                 .id(5)
-                .name("Театр")
+                .name("Балет")
                 .build();
 
         JsonContent<CategoryChangedDto> result = json.write(category);
 
         assertThat(result).extractingJsonPathNumberValue("$.id").isEqualTo(5);
-        assertThat(result).extractingJsonPathStringValue("$.name").isEqualTo("Театр");
+        assertThat(result).extractingJsonPathStringValue("$.name").isEqualTo("Балет");
     }
 }
