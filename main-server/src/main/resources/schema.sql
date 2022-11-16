@@ -34,7 +34,7 @@ CREATE TABLE events (
     participant_limit INT NOT NULL,
     published_on TIMESTAMP,
     request_moderation BOOLEAN NOT NULL,
-    state VARCHAR(64) NOT NULL DEFAULT 'PENDING',
+    state VARCHAR(9) NOT NULL DEFAULT 'PENDING',
     CONSTRAINT pk_events PRIMARY KEY (event_id),
     FOREIGN KEY (category_id) REFERENCES category_event (category_id) ON DELETE CASCADE,
     FOREIGN KEY (initiator_id) REFERENCES users (user_id) ON DELETE CASCADE

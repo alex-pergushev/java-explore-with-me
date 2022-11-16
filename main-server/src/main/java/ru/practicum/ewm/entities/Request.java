@@ -23,10 +23,12 @@ public class Request {
     @ManyToOne
     @JoinColumn(name = "event_id")
     private Event event;
+    @Column
     private LocalDateTime created;
     @ManyToOne
     @JoinColumn(name = "requester")
     private User requester;
     @Enumerated(EnumType.STRING)
+    @Column
     private Status status;
 }

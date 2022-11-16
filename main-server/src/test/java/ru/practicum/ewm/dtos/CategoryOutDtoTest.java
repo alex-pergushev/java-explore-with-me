@@ -13,7 +13,7 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 @JsonTest
 class CategoryOutDtoTest {
     @Autowired
-    JacksonTester<CategoryOutDto> json;
+    private JacksonTester<CategoryOutDto> json;
 
     @Test
     void testCategoryOutDto() throws IOException {

@@ -55,9 +55,7 @@ public class EventPersonalServiceImpl extends StatisticEventService implements E
 
     @Override
     public EventFullOutDto getEventById(long userId, long eventId) {
-        Event event = eventRepository.findByIdAndInitiatorId(eventId, userId)
-                .orElseThrow(() -> new EventNotFoundException(String.format("пользователь с id=%s не инициировал" +
-                        "событие с id=%s", userId, eventId)));
+        Event event = getEventOrElseThrow(userId, eventId);
 
         return (EventFullOutDto) addConfirmedRequestsAndViews(List.of(event), true).get(0);
     }
@@ -67,9 +65,7 @@ public class EventPersonalServiceImpl extends StatisticEventService implements E
         Long eventId = eventChangedDto.getId();
 
         Event beingUpdated = eventId == null ? getEventByInitiatorId(userId)
-                : eventRepository.findByIdAndInitiatorId(eventId, userId)
-                .orElseThrow(() -> new EventNotFoundException(String.format("пользователь с id=%s не инициировал " +
-                        "событие с id=%s", userId, eventId)));
+                : getEventOrElseThrow(userId, eventId);
 
         Event withChanges = checkChangesAndUpdate(eventChangedDto, beingUpdated);
         Event updated = eventRepository.save(withChanges);
@@ -95,9 +91,7 @@ public class EventPersonalServiceImpl extends StatisticEventService implements E
 
     @Override
     public EventFullOutDto cancelEvent(long userId, long eventId) {
-        Event event = eventRepository.findByIdAndInitiatorId(eventId, userId)
-                .orElseThrow(() -> new EventNotFoundException(String.format("пользователь с id=%s не инициировал " +
-                        "событие с id=%s", userId, eventId)));
+        Event event = getEventOrElseThrow(userId, eventId);
 
         if (event.getState() != State.PENDING)
             throw new ConditionIsNotMetException("Только незаконченные события могут быть отменены");
@@ -110,9 +104,7 @@ public class EventPersonalServiceImpl extends StatisticEventService implements E
 
     @Override
     public List<RequestOutDto> getRequests(long userId, long eventId) {
-        if (!eventRepository.existsByIdAndInitiatorId(eventId, userId))
-            throw new EventNotFoundException(String.format("пользователь с id=%s не инициировал событие с id=%s",
-                    userId, eventId));
+        existsInitiator(userId, eventId);;
 
         return requestRepository.findAllByEventId(eventId).stream()
                 .map(RequestMapper::toRequestOut)
@@ -121,9 +113,7 @@ public class EventPersonalServiceImpl extends StatisticEventService implements E
 
     @Override
     public RequestOutDto confirmRequest(long userId, long eventId, long reqId) {
-        Event event = eventRepository.findByIdAndInitiatorId(eventId, userId)
-                .orElseThrow(() -> new EventNotFoundException(String.format("пользователь с id=%s не инициировал " +
-                        "событие с id=%s", userId, eventId)));
+        Event event = getEventOrElseThrow(userId, eventId);
 
         Request request = requestRepository.findById(reqId)
                 .orElseThrow(() -> new RequestNotFoundException(String.format("Запрос с id=%s не найден", reqId)));
@@ -148,9 +138,7 @@ public class EventPersonalServiceImpl extends StatisticEventService implements E
 
     @Override
     public RequestOutDto rejectRequest(long userId, long eventId, long reqId) {
-        if (!eventRepository.existsByIdAndInitiatorId(eventId, userId))
-            throw new EventNotFoundException(String.format("пользователь с id=%s не инициировал событие с id=%s",
-                    userId, eventId));
+        existsInitiator(userId, eventId);
 
         Request request = requestRepository.findById(reqId)
                 .orElseThrow(() -> new RequestNotFoundException(String.format("запрос с id=%s не найден", reqId)));
@@ -162,12 +150,25 @@ public class EventPersonalServiceImpl extends StatisticEventService implements E
         return RequestMapper.toRequestOut(request);
     }
 
+    private void existsInitiator(long userId, long eventId) {
+        if (!eventRepository.existsByIdAndInitiatorId(eventId, userId)) {
+            throw new EventNotFoundException(String.format("пользователь с id=%s не инициировал событие с id=%s",
+                    userId, eventId));
+        }
+    }
+
+    private Event getEventOrElseThrow(long userId, long eventId) {
+        return eventRepository.findByIdAndInitiatorId(eventId, userId)
+                .orElseThrow(() -> new EventNotFoundException(String.format("пользователь с id=%s не инициировал" +
+                        "событие с id=%s", userId, eventId)));
+    }
+
     private Event getEventByInitiatorId(long userId) {
         QEvent event = QEvent.event;
         BooleanExpression condition = event.initiator.id.eq(userId).and(event.state.in(State.PENDING, State.CANCELED));
         Iterable<Event> events = eventRepository.findAll(condition);
         if (!events.iterator().hasNext())
-            throw new ConditionIsNotMetException("not a single event with the pending or canceled status was found");
+            throw new ConditionIsNotMetException("не было найдено ни одного события со статусом на рассмотрении или отменен");
         if (events.spliterator().getExactSizeIfKnown() > 1) {
             throw new ConditionIsNotMetException("не было найдено ни одного события со статусом на рассмотрении или отменен");
         }

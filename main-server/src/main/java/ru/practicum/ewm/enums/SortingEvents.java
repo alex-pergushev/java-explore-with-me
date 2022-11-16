@@ -6,8 +6,8 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum SortingEvents {
-    EVENT_DATE("EVENT_DATE"),
-    VIEWS("VIEWS");
+    EVENT_DATE("Дата события"),
+    VIEWS("Просмотры");
 
     private final String sort;
 }
