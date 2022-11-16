@@ -5,5 +5,5 @@ import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import ru.practicum.ewm.entities.User;
 
 public interface UserRepository extends JpaRepository<User, Long>, QuerydslPredicateExecutor<User>  {
-
+    boolean existsByName(String name);
 }

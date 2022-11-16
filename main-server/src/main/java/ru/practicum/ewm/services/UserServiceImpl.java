@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import ru.practicum.ewm.dtos.UserInDto;
 import ru.practicum.ewm.dtos.UserOutDto;
+import ru.practicum.ewm.exceptions.DuplicateObjectException;
 import ru.practicum.ewm.exceptions.UserNotFoundException;
 import ru.practicum.ewm.entities.QUser;
 import ru.practicum.ewm.entities.User;
@@ -41,6 +42,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserOutDto createUser(UserInDto userInDto) {
+
+        if (userRepository.existsByName(userInDto.getName())) {
+            throw new DuplicateObjectException(String.format("пользователь с именем {} уже существует", userInDto.getName()));
+       }
+
+
         User saved = userRepository.save(UserMapper.toUser(userInDto));
         log.info("новый пользователь id={} успешно добавлен", saved.getId());
         return UserMapper.toUserOut(saved);

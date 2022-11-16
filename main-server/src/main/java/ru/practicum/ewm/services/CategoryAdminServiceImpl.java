@@ -8,6 +8,7 @@ import ru.practicum.ewm.entities.Category;
 import ru.practicum.ewm.dtos.CategoryChangedDto;
 import ru.practicum.ewm.dtos.CategoryInDto;
 import ru.practicum.ewm.dtos.CategoryOutDto;
+import ru.practicum.ewm.exceptions.DuplicateObjectException;
 import ru.practicum.ewm.mappers.CategoryMapper;
 import ru.practicum.ewm.repositories.CategoryRepository;
 
@@ -30,6 +31,11 @@ public class CategoryAdminServiceImpl implements CategoryAdminService {
 
     @Override
     public CategoryOutDto createCategory(CategoryInDto categoryInDto) {
+
+        if (categoryRepository.existsByName(categoryInDto.getName())) {
+            throw new DuplicateObjectException(String.format("категория с именем {} уже существует", categoryInDto.getName()));
+        }
+
         Category category = categoryRepository.save(CategoryMapper.toCategory(categoryInDto));
         log.info("новая категория id={}, name={} добавлена", category.getId(), category.getName());
         return CategoryMapper.toCategoryOut(category);
@@ -40,12 +46,14 @@ public class CategoryAdminServiceImpl implements CategoryAdminService {
         Category category = categoryRepository.findById(categoryChangedDto.getId())
                 .orElseThrow(() -> new CategoryNotFoundException(String.format("категория с id=%s не найдена",
                         categoryChangedDto.getId())));
-
-        category.setName(categoryChangedDto.getName());
-        Category updated = categoryRepository.save(category);
-        log.info("категория id={}, name={} обновлена", updated.getId(), updated.getName());
-
-        return CategoryMapper.toCategoryOut(updated);
+        if(!categoryRepository.existsByName(categoryChangedDto.getName())) {
+            category.setName(categoryChangedDto.getName());
+            Category updated = categoryRepository.save(category);
+            log.info("категория id={}, name={} обновлена", updated.getId(), updated.getName());
+            return CategoryMapper.toCategoryOut(updated);
+        } else {
+            throw new DuplicateObjectException(String.format("категория с именем {} уже существует", categoryChangedDto.getName()));
+        }
     }
 
     @Override

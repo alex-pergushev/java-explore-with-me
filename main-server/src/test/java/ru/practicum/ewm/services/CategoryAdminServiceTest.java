@@ -34,7 +34,7 @@ class CategoryAdminServiceTest {
     @BeforeAll
     public static void setUp() {
         categoryIn = CategoryInDto.builder()
-                .name("Cats Show")
+                .name("Выставка собак")
                 .build();
     }
 
@@ -57,7 +57,7 @@ class CategoryAdminServiceTest {
         CategoryOutDto old = categoryAdminService.createCategory(categoryIn);
         CategoryChangedDto categoryChanged = CategoryChangedDto.builder()
                 .id(old.getId())
-                .name("Выставка собак")
+                .name("Выставка ездовых собак")
                 .build();
 
         CategoryOutDto updated = categoryAdminService.updateCategory(categoryChanged);
@@ -70,7 +70,7 @@ class CategoryAdminServiceTest {
 
         assertThat(category, notNullValue());
         assertThat(updated, equalTo(CategoryMapper.toCategoryOut(category)));
-        assertThat(updated.getName(), equalTo("Выставка собак"));
+        assertThat(updated.getName(), equalTo("Выставка ездовых собак"));
         assertThat(updated.getId(), equalTo(old.getId()));
     }
 
