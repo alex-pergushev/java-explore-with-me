@@ -2,7 +2,6 @@ package ru.practicum.ewm.entities;
 
 import lombok.*;
 import ru.practicum.ewm.enums.State;
-import ru.practicum.ewm.enums.Status;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
