@@ -38,6 +38,7 @@ public class EventAdminServiceImpl extends StatisticEventService implements Even
     private final CategoryRepository categoryRepository;
 
 
+
     @Autowired
     public EventAdminServiceImpl(EventStatClient eventStatClient, RequestRepository requestRepository,
                                  EventRepository eventRepository, CategoryRepository categoryRepository) {

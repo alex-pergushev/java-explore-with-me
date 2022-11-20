@@ -7,6 +7,7 @@ import ru.practicum.ewm.entities.Event;
 import ru.practicum.ewm.dtos.EventFullOutDto;
 import ru.practicum.ewm.dtos.EventOutDto;
 import ru.practicum.ewm.dtos.EventShortOutDto;
+import ru.practicum.ewm.mappers.CommentMapper;
 import ru.practicum.ewm.mappers.EventMapper;
 import ru.practicum.ewm.repositories.RequestRepository;
 
@@ -23,7 +24,8 @@ public abstract class StatisticEventService {
     protected final RequestRepository requestRepository;
 
     protected List<EventOutDto> addConfirmedRequestsAndViews(List<Event> events, boolean isFull) {
-        if (events.isEmpty()) {
+
+       if (events.isEmpty()) {
             log.info("передан пустой список событий");
             return new ArrayList<>();
         }
