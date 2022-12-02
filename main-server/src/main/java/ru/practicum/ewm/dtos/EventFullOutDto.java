@@ -9,6 +9,7 @@ import lombok.experimental.SuperBuilder;
 import ru.practicum.ewm.enums.State;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
@@ -25,4 +26,5 @@ public class EventFullOutDto extends EventOutDto {
     private LocalDateTime publishedOn;
     private boolean requestModeration;
     private State state;
+    private List<CommentDto> comments;
 }

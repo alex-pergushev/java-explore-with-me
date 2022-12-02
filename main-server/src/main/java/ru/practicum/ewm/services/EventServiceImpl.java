@@ -9,6 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.practicum.ewm.client.event.EventStatClient;
 import ru.practicum.ewm.client.event.StatisticEventService;
+import ru.practicum.ewm.entities.Comment;
 import ru.practicum.ewm.exceptions.EventNotFoundException;
 import ru.practicum.ewm.exceptions.NoAccessRightsException;
 import ru.practicum.ewm.enums.SortingEvents;
@@ -18,6 +19,9 @@ import ru.practicum.ewm.entities.Event;
 import ru.practicum.ewm.entities.QEvent;
 import ru.practicum.ewm.dtos.EventFullOutDto;
 import ru.practicum.ewm.dtos.EventShortOutDto;
+import ru.practicum.ewm.mappers.CommentMapper;
+import ru.practicum.ewm.mappers.EventMapper;
+import ru.practicum.ewm.repositories.CommentRepository;
 import ru.practicum.ewm.repositories.EventRepository;
 import ru.practicum.ewm.entities.QRequest;
 import ru.practicum.ewm.repositories.RequestRepository;
@@ -31,11 +35,13 @@ import java.util.stream.Collectors;
 @Slf4j
 public class EventServiceImpl extends StatisticEventService implements EventService {
     private final EventRepository eventRepository;
+    private final CommentRepository commentRepository;
 
     @Autowired
-    public EventServiceImpl(EventStatClient eventStatClient, RequestRepository requestRepository, EventRepository eventRepository) {
+    public EventServiceImpl(EventStatClient eventStatClient, RequestRepository requestRepository, EventRepository eventRepository, CommentRepository commentRepository) {
         super(eventStatClient, requestRepository);
         this.eventRepository = eventRepository;
+        this.commentRepository = commentRepository;
     }
 
     @Override
@@ -52,7 +58,7 @@ public class EventServiceImpl extends StatisticEventService implements EventServ
         return getEventsSortedByViews(finalCondition, from, size);
     }
 
-    @Override
+   @Override
     public EventFullOutDto getEventById(long id) {
         Event event = eventRepository.findById(id)
                 .orElseThrow(() -> new EventNotFoundException(String.format("событие с id=%s не найдено", id)));
@@ -61,7 +67,13 @@ public class EventServiceImpl extends StatisticEventService implements EventServ
             throw new NoAccessRightsException(String.format("Нет прав на просмотр события с id=%s потому что " +
                     "оно еще не была опубликовано", id));
 
-        return (EventFullOutDto) addConfirmedRequestsAndViews(List.of(event), true).get(0);
+        List<Comment> comments = commentRepository.findAllByEventIdAndState(event.getId(), State.PUBLISHED);
+        EventFullOutDto eventFullDto = EventMapper.toEventFull(event,0,0);
+        eventFullDto.setComments(comments.stream().map(CommentMapper::toCommentOut).collect(Collectors.toList()));
+
+       EventFullOutDto result = (EventFullOutDto) addConfirmedRequestsAndViews(List.of(event), true).get(0);
+
+        return eventFullDto;
     }
 
     private BooleanExpression getFinalCondition(String text, int[] categories, Boolean paid, LocalDateTime rangeStart,

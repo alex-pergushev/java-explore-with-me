@@ -4,7 +4,7 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.practicum.ewm.repositories.CategoryRepository;
+import ru.practicum.ewm.repositories.*;
 import ru.practicum.ewm.client.event.EventStatClient;
 import ru.practicum.ewm.client.event.StatisticEventService;
 import ru.practicum.ewm.exceptions.*;
@@ -17,12 +17,9 @@ import ru.practicum.ewm.dtos.EventFullOutDto;
 import ru.practicum.ewm.dtos.EventInDto;
 import ru.practicum.ewm.dtos.EventShortOutDto;
 import ru.practicum.ewm.mappers.EventMapper;
-import ru.practicum.ewm.repositories.EventRepository;
 import ru.practicum.ewm.entities.Request;
 import ru.practicum.ewm.dtos.RequestOutDto;
 import ru.practicum.ewm.mappers.RequestMapper;
-import ru.practicum.ewm.repositories.RequestRepository;
-import ru.practicum.ewm.repositories.UserRepository;
 import ru.practicum.ewm.utils.Pagination;
 
 import java.util.List;
@@ -34,6 +31,7 @@ public class EventPersonalServiceImpl extends StatisticEventService implements E
     private final EventRepository eventRepository;
     private final CategoryRepository categoryRepository;
     private final UserRepository userRepository;
+
 
     @Autowired
     public EventPersonalServiceImpl(EventStatClient eventStatClient, RequestRepository requestRepository,

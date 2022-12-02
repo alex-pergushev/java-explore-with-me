@@ -39,7 +39,7 @@ public class CompilationAdminServiceImpl extends StatisticEventService implement
     public CompilationOutDto createCompilation(CompilationInDto compilationInDto) {
         List<Event> events = Arrays.stream(compilationInDto.getEvents())
                 .mapToObj(id -> eventRepository.findById(id)
-                        .orElseThrow(() -> new EventNotFoundException(String.format("собитие с id=%s не найдено", id))))
+                        .orElseThrow(() -> new EventNotFoundException(String.format("событие с id=%s не найдено", id))))
                 .collect(Collectors.toList());
         Compilation compilation = CompilationMapper.toCompilation(compilationInDto, events);
         Compilation saved = compilationRepository.save(compilation);
@@ -87,7 +87,7 @@ public class CompilationAdminServiceImpl extends StatisticEventService implement
         compilation.setEvents(events);
 
         compilationRepository.save(compilation);
-        log.info("событие id={} побавлено в подборку id={}", eventId, compId);
+        log.info("событие id={} добавлено в подборку id={}", eventId, compId);
     }
 
     @Override
