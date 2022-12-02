@@ -2,7 +2,8 @@
   "info": {
     "_postman_id": "f66d0dfa-1def-44cb-abee-dabff5c6b5f1",
     "name": "Test Explore With Me - Add comment",
-    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "21117562"
   },
   "item": [
     {
@@ -11,18 +12,17 @@
         {
           "listen": "test",
           "script": {
-            "type": "text/javascript",
             "exec": [
               "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {",
               "    pm.response.to.be.ok;    ",
               "    pm.response.to.be.withBody;",
               "    pm.response.to.be.json;",
               "});"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
-      "id": "c8cbf829-2f6d-4eea-8337-182e59e310ae",
       "request": {
         "method": "POST",
         "header": [],
@@ -35,7 +35,17 @@
             }
           }
         },
-        "url": "localhost:8080/admin/users"
+        "url": {
+          "raw": "localhost:8080/admin/users",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "admin",
+            "users"
+          ]
+        }
       },
       "response": []
     },
@@ -45,18 +55,17 @@
         {
           "listen": "test",
           "script": {
-            "type": "text/javascript",
             "exec": [
               "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {",
               "    pm.response.to.be.ok;    ",
               "    pm.response.to.be.withBody;",
               "    pm.response.to.be.json;",
               "});"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
-      "id": "bbf3d550-35d4-48f3-b73d-39e7a8383e04",
       "request": {
         "method": "POST",
         "header": [],
@@ -69,7 +78,17 @@
             }
           }
         },
-        "url": "localhost:8080/admin/users"
+        "url": {
+          "raw": "localhost:8080/admin/users",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "admin",
+            "users"
+          ]
+        }
       },
       "response": []
     },
@@ -79,18 +98,17 @@
         {
           "listen": "test",
           "script": {
-            "type": "text/javascript",
             "exec": [
               "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {",
               "    pm.response.to.be.ok;    ",
               "    pm.response.to.be.withBody;",
               "    pm.response.to.be.json;",
               "});"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
-      "id": "b8f217d6-8777-49eb-b6ff-d6704ffd87d9",
       "request": {
         "method": "POST",
         "header": [],
@@ -103,7 +121,17 @@
             }
           }
         },
-        "url": "localhost:8080/admin/users"
+        "url": {
+          "raw": "localhost:8080/admin/users",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "admin",
+            "users"
+          ]
+        }
       },
       "response": []
     },
@@ -113,18 +141,17 @@
         {
           "listen": "test",
           "script": {
-            "type": "text/javascript",
             "exec": [
               "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {",
               "    pm.response.to.be.ok;    ",
               "    pm.response.to.be.withBody;",
               "    pm.response.to.be.json;",
               "});"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
-      "id": "e0a6bbf2-b439-4395-a66a-6b20f9268f0d",
       "request": {
         "method": "POST",
         "header": [],
@@ -137,7 +164,17 @@
             }
           }
         },
-        "url": "localhost:8080/admin/categories"
+        "url": {
+          "raw": "localhost:8080/admin/categories",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "admin",
+            "categories"
+          ]
+        }
       },
       "response": []
     },
@@ -147,18 +184,17 @@
         {
           "listen": "test",
           "script": {
-            "type": "text/javascript",
             "exec": [
               "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {",
               "    pm.response.to.be.ok;    ",
               "    pm.response.to.be.withBody;",
               "    pm.response.to.be.json;",
               "});"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
-      "id": "235a76c0-1c37-4b82-9dc5-55b7bae18707",
       "request": {
         "method": "POST",
         "header": [],
@@ -171,7 +207,17 @@
             }
           }
         },
-        "url": "localhost:8080/admin/categories"
+        "url": {
+          "raw": "localhost:8080/admin/categories",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "admin",
+            "categories"
+          ]
+        }
       },
       "response": []
     },
@@ -181,31 +227,41 @@
         {
           "listen": "test",
           "script": {
-            "type": "text/javascript",
             "exec": [
               "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {",
               "    pm.response.to.be.ok;    ",
               "    pm.response.to.be.withBody;",
               "    pm.response.to.be.json;",
               "});"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
-      "id": "39b7d739-f850-46e7-a483-2140b665cec5",
       "request": {
         "method": "POST",
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\n    \"annotation\":\"annotation1 + annotation1\",\n    \"category\":1,\n    \"description\":\"description1 + description1\",\n    \"eventDate\":\"2022-11-22 12:00:00\",\n    \"location\":{\n        \"lat\":1.1,\n        \"lon\":2.1\n    },\n    \"title\":\"event1\"\n}",
+          "raw": "{\n    \"annotation\":\"annotation1 + annotation1\",\n    \"category\":1,\n    \"description\":\"description1 + description1\",\n    \"eventDate\":\"2022-12-22 12:00:00\",\n    \"location\":{\n        \"lat\":1.1,\n        \"lon\":2.1\n    },\n    \"title\":\"event1\"\n}",
           "options": {
             "raw": {
               "language": "json"
             }
           }
         },
-        "url": "localhost:8080/users/1/events"
+        "url": {
+          "raw": "localhost:8080/users/1/events",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "users",
+            "1",
+            "events"
+          ]
+        }
       },
       "response": []
     },
@@ -215,20 +271,31 @@
         {
           "listen": "test",
           "script": {
-            "type": "text/javascript",
             "exec": [
               "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {",
               "    pm.response.to.be.ok;    ",
               "});"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
-      "id": "afe49491-5c64-4d8f-b632-d5e63ac3b96c",
       "request": {
         "method": "PATCH",
         "header": [],
-        "url": "localhost:8080/admin/events/1/publish"
+        "url": {
+          "raw": "localhost:8080/admin/events/1/publish",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "admin",
+            "events",
+            "1",
+            "publish"
+          ]
+        }
       },
       "response": []
     },
@@ -238,31 +305,41 @@
         {
           "listen": "test",
           "script": {
-            "type": "text/javascript",
             "exec": [
               "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {",
               "    pm.response.to.be.ok;    ",
               "    pm.response.to.be.withBody;",
               "    pm.response.to.be.json;",
               "});"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
-      "id": "6cc21f58-448c-4184-91b2-0f24a00fffda",
       "request": {
         "method": "POST",
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\n    \"annotation\":\"annotation2 + annotation2\",\n    \"category\":1,\n    \"description\":\"description2 + description2\",\n    \"eventDate\":\"2022-11-25 12:00:00\",\n    \"location\":{\n        \"lat\":1.1,\n        \"lon\":2.1\n    },\n    \"title\":\"event2\"\n}",
+          "raw": "{\n    \"annotation\":\"annotation2 + annotation2\",\n    \"category\":1,\n    \"description\":\"description2 + description2\",\n    \"eventDate\":\"2022-12-25 12:00:00\",\n    \"location\":{\n        \"lat\":1.1,\n        \"lon\":2.1\n    },\n    \"title\":\"event2\"\n}",
           "options": {
             "raw": {
               "language": "json"
             }
           }
         },
-        "url": "localhost:8080/users/2/events"
+        "url": {
+          "raw": "localhost:8080/users/2/events",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "users",
+            "2",
+            "events"
+          ]
+        }
       },
       "response": []
     },
@@ -272,20 +349,31 @@
         {
           "listen": "test",
           "script": {
-            "type": "text/javascript",
             "exec": [
               "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {",
               "    pm.response.to.be.ok;    ",
               "});"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
-      "id": "692ee3fa-c267-4b8e-947d-93bdad31d9b2",
       "request": {
         "method": "PATCH",
         "header": [],
-        "url": "localhost:8080/admin/events/2/publish"
+        "url": {
+          "raw": "localhost:8080/admin/events/2/publish",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "admin",
+            "events",
+            "2",
+            "publish"
+          ]
+        }
       },
       "response": []
     },
@@ -295,31 +383,41 @@
         {
           "listen": "test",
           "script": {
-            "type": "text/javascript",
             "exec": [
               "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {",
               "    pm.response.to.be.ok;    ",
               "    pm.response.to.be.withBody;",
               "    pm.response.to.be.json;",
               "});"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
-      "id": "0fa9a685-ee6a-431c-946c-008ade4d8cf8",
       "request": {
         "method": "POST",
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\n    \"annotation\":\"annotation3 + annotation3\",\n    \"category\":2,\n    \"description\":\"description3 + description3\",\n    \"eventDate\":\"2022-11-30 12:00:00\",\n    \"location\":{\n        \"lat\":1.1,\n        \"lon\":2.1\n    },\n    \"title\":\"event3\"\n}",
+          "raw": "{\n    \"annotation\":\"annotation3 + annotation3\",\n    \"category\":2,\n    \"description\":\"description3 + description3\",\n    \"eventDate\":\"2022-12-30 12:00:00\",\n    \"location\":{\n        \"lat\":1.1,\n        \"lon\":2.1\n    },\n    \"title\":\"event3\"\n}",
           "options": {
             "raw": {
               "language": "json"
             }
           }
         },
-        "url": "localhost:8080/users/2/events"
+        "url": {
+          "raw": "localhost:8080/users/2/events",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "users",
+            "2",
+            "events"
+          ]
+        }
       },
       "response": []
     },
@@ -329,18 +427,17 @@
         {
           "listen": "test",
           "script": {
-            "type": "text/javascript",
             "exec": [
               "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {",
               "    pm.response.to.be.ok;    ",
               "    pm.response.to.be.withBody;",
               "    pm.response.to.be.json;",
               "});"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
-      "id": "90db87f3-b996-435c-b309-a39815bbd226",
       "request": {
         "method": "POST",
         "header": [],
@@ -353,7 +450,18 @@
             }
           }
         },
-        "url": "localhost:8080/users/1/comments"
+        "url": {
+          "raw": "localhost:8080/users/1/comments",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "users",
+            "1",
+            "comments"
+          ]
+        }
       },
       "response": []
     },
@@ -363,18 +471,17 @@
         {
           "listen": "test",
           "script": {
-            "type": "text/javascript",
             "exec": [
               "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {",
               "    pm.response.to.be.ok;    ",
               "    pm.response.to.be.withBody;",
               "    pm.response.to.be.json;",
               "});"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
-      "id": "bf36b4c4-4b9a-4879-b2d1-44426320c08b",
       "request": {
         "method": "POST",
         "header": [],
@@ -387,7 +494,18 @@
             }
           }
         },
-        "url": "localhost:8080/users/1/comments"
+        "url": {
+          "raw": "localhost:8080/users/1/comments",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "users",
+            "1",
+            "comments"
+          ]
+        }
       },
       "response": []
     },
@@ -397,18 +515,17 @@
         {
           "listen": "test",
           "script": {
-            "type": "text/javascript",
             "exec": [
               "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {",
               "    pm.response.to.be.ok;    ",
               "    pm.response.to.be.withBody;",
               "    pm.response.to.be.json;",
               "});"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
-      "id": "6fe8365e-1224-42d0-a43f-0fe308947fae",
       "request": {
         "method": "POST",
         "header": [],
@@ -421,7 +538,18 @@
             }
           }
         },
-        "url": "localhost:8080/users/2/comments"
+        "url": {
+          "raw": "localhost:8080/users/2/comments",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "users",
+            "2",
+            "comments"
+          ]
+        }
       },
       "response": []
     },
@@ -431,16 +559,15 @@
         {
           "listen": "test",
           "script": {
-            "type": "text/javascript",
             "exec": [
               "pm.test(\"Ответ должен содержать код статуса 400\", function () {",
               "    pm.response.to.be.badRequest;    ",
               "});"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
-      "id": "71dfe567-c4cd-4a4a-9769-e1931217f29f",
       "request": {
         "method": "POST",
         "header": [],
@@ -453,7 +580,18 @@
             }
           }
         },
-        "url": "localhost:8080/users/2/comments"
+        "url": {
+          "raw": "localhost:8080/users/2/comments",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "users",
+            "2",
+            "comments"
+          ]
+        }
       },
       "response": []
     },
@@ -463,7 +601,6 @@
         {
           "listen": "test",
           "script": {
-            "type": "text/javascript",
             "exec": [
               "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {",
               "    pm.response.to.be.ok;    ",
@@ -476,11 +613,11 @@
               "pm.test(\"Количество комментариев должно быть 0\", function () {",
               "    pm.expect(target.comments.length).equals(0);",
               "});"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
-      "id": "8bdfd992-3b86-405a-a443-816b5d60b042",
       "protocolProfileBehavior": {
         "disableBodyPruning": true
       },
@@ -496,7 +633,17 @@
             }
           }
         },
-        "url": "localhost:8080/events/1"
+        "url": {
+          "raw": "localhost:8080/events/1",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "events",
+            "1"
+          ]
+        }
       },
       "response": []
     },
@@ -506,7 +653,6 @@
         {
           "listen": "test",
           "script": {
-            "type": "text/javascript",
             "exec": [
               "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {",
               "    pm.response.to.be.ok;    ",
@@ -519,11 +665,11 @@
               "pm.test(\"Количество комментариев должно быть 0\", function () {",
               "    pm.expect(target.comments.length).equals(0);",
               "});"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
-      "id": "cbe5cfc2-0737-4ee1-89bc-e824cb476a11",
       "protocolProfileBehavior": {
         "disableBodyPruning": true
       },
@@ -539,7 +685,17 @@
             }
           }
         },
-        "url": "localhost:8080/events/2"
+        "url": {
+          "raw": "localhost:8080/events/2",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "events",
+            "2"
+          ]
+        }
       },
       "response": []
     },
@@ -549,16 +705,15 @@
         {
           "listen": "test",
           "script": {
-            "type": "text/javascript",
             "exec": [
               "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {",
               "    pm.response.to.be.ok;    ",
               "});"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
-      "id": "9a5cf792-4680-4709-8007-3e0eff05dacb",
       "request": {
         "method": "PATCH",
         "header": [],
@@ -571,7 +726,18 @@
             }
           }
         },
-        "url": "localhost:8080/admin/comments/1"
+        "url": {
+          "raw": "localhost:8080/admin/comments/1",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "admin",
+            "comments",
+            "1"
+          ]
+        }
       },
       "response": []
     },
@@ -581,16 +747,15 @@
         {
           "listen": "test",
           "script": {
-            "type": "text/javascript",
             "exec": [
               "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {",
               "    pm.response.to.be.ok;    ",
               "});"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
-      "id": "9570cee2-2f75-4e55-af5c-a0b6c285a29a",
       "request": {
         "method": "PATCH",
         "header": [],
@@ -603,7 +768,18 @@
             }
           }
         },
-        "url": "localhost:8080/admin/comments/2"
+        "url": {
+          "raw": "localhost:8080/admin/comments/2",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "admin",
+            "comments",
+            "2"
+          ]
+        }
       },
       "response": []
     },
@@ -613,16 +789,15 @@
         {
           "listen": "test",
           "script": {
-            "type": "text/javascript",
             "exec": [
               "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {",
               "    pm.response.to.be.ok;    ",
               "});"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
-      "id": "5a83f353-7a0b-4a4e-af57-c1ca20524615",
       "request": {
         "method": "PATCH",
         "header": [],
@@ -635,7 +810,18 @@
             }
           }
         },
-        "url": "localhost:8080/admin/comments/3"
+        "url": {
+          "raw": "localhost:8080/admin/comments/3",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "admin",
+            "comments",
+            "3"
+          ]
+        }
       },
       "response": []
     },
@@ -645,7 +831,6 @@
         {
           "listen": "test",
           "script": {
-            "type": "text/javascript",
             "exec": [
               "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {",
               "    pm.response.to.be.ok;    ",
@@ -659,11 +844,11 @@
               "    pm.expect(target.comments.length).equals(1);",
               "    pm.expect(target.comments[0].text).equals(\"comment1 text\");",
               "});"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
-      "id": "3632a746-7491-453c-bb7d-ad1c5041bcdb",
       "protocolProfileBehavior": {
         "disableBodyPruning": true
       },
@@ -679,7 +864,17 @@
             }
           }
         },
-        "url": "localhost:8080/events/1"
+        "url": {
+          "raw": "localhost:8080/events/1",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "events",
+            "1"
+          ]
+        }
       },
       "response": []
     },
@@ -689,7 +884,6 @@
         {
           "listen": "test",
           "script": {
-            "type": "text/javascript",
             "exec": [
               "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {",
               "    pm.response.to.be.ok;    ",
@@ -703,11 +897,11 @@
               "    pm.expect(target.comments.length).equals(1);",
               "    pm.expect(target.comments[0].text).equals(\"comment2 new text\");",
               "});"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
-      "id": "83d699c1-76ea-41f4-befb-8969310a59fb",
       "protocolProfileBehavior": {
         "disableBodyPruning": true
       },
@@ -723,7 +917,17 @@
             }
           }
         },
-        "url": "localhost:8080/events/2"
+        "url": {
+          "raw": "localhost:8080/events/2",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "events",
+            "2"
+          ]
+        }
       },
       "response": []
     }
